@@ -434,6 +434,61 @@ h1, h2, h3 {
 }
 
 /* ─────────────────────────────────
+   MARQUEE BAND
+   - El contenedor ocupa siempre el 100% del ancho de la
+     ventana (no está limitado por .container).
+   - La animación va directamente en CSS, no depende de
+     ninguna clase añadida por JS: así funciona siempre,
+     incluso si el script tarda en ejecutarse o falla.
+   - Las imágenes tienen ancho fijo (no solo alto), para que
+     el track calcule bien su anchura total desde el primer
+     pintado y nunca se "amontone" a la izquierda.
+───────────────────────────────── */
+.marquee-band {
+  width: 100%;
+  overflow: hidden;
+  background: var(--clr-bg-soft);
+  border-top: 1px solid var(--clr-rose);
+  border-bottom: 1px solid var(--clr-rose);
+  padding-block: .75rem;
+}
+
+.marquee-band__track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-slide 32s linear infinite;
+}
+
+.marquee-band__track img {
+  height: 72px;
+  width: 72px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  flex: 0 0 auto;
+  border: 1px solid var(--clr-rose);
+  box-shadow: var(--shadow-card);
+  display: block;
+}
+
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pausa al pasar el ratón por encima, sin depender de JS */
+.marquee-band:hover .marquee-band__track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .marquee-band__track img { height: 56px; width: 56px; }
+  .marquee-band__track { gap: .85rem; animation-duration: 22s; }
+}
+
+/* ─────────────────────────────────
    SOBRE MÍ
 ───────────────────────────────── */
 .about {
