@@ -32,6 +32,16 @@
 
   --max-w: 1160px;
   --gap:   clamp(1.5rem, 4vw, 2.5rem);
+
+  /* Marquee — el JS sobreescribe --marquee-elements con el conteo real */
+  --marquee-item-size:   72px;   /* ancho y alto de cada imagen */
+  --marquee-item-gap:    30px;   /* separación entre imágenes */
+  --marquee-elements:    22;     /* valor por defecto, JS lo actualiza */
+  /* Ancho de un ítem completo (imagen + gap). Usamos px fijos para que
+     el cálculo de translateX sea exacto independientemente del viewport. */
+  --marquee-item-total:  calc(var(--marquee-item-size) + var(--marquee-item-gap));
+  /* Duración: N elementos × segundos por elemento */
+  --marquee-duration:    calc(var(--marquee-elements) * 3.5s);
 }
 
 /* ── RESET ── */
@@ -60,7 +70,7 @@ ul { list-style: none; }
   padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
 
-.short { width: 55% !important; } /* helper para ficha */
+.short { width: 55% !important; }
 
 /* ── TIPOGRAFÍA ── */
 h1, h2, h3 {
@@ -73,7 +83,6 @@ h1, h2, h3 {
 .section__title { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
 .section__title--center { text-align: center; }
 
-/* Eyebrow: siempre centrado en esta web */
 .eyebrow {
   font-family: var(--ff-mono);
   font-size: .72rem;
@@ -85,7 +94,6 @@ h1, h2, h3 {
   margin-bottom: .75rem;
 }
 
-/* Lead — texto de apoyo bajo títulos */
 .lead {
   font-size: clamp(.95rem, 1.4vw, 1.1rem);
   color: var(--clr-brown);
@@ -160,7 +168,7 @@ h1, h2, h3 {
 .section--soft { background: var(--clr-bg-soft); }
 .section--tight-top { padding-top: 1rem; }
 
-/* ── CARD (base compartida por pricing y gráfica) ── */
+/* ── CARD ── */
 .card {
   background: var(--clr-bg-card);
   border: 1px solid var(--clr-rose);
@@ -186,7 +194,7 @@ h1, h2, h3 {
   border-radius: var(--radius-md);
 }
 
-/* ── HIGHLIGHT BOX (cifra grande destacada) ── */
+/* ── HIGHLIGHT BOX ── */
 .highlight-box {
   background: var(--clr-bg-card);
   border: 1.5px solid var(--clr-rose);
@@ -420,7 +428,6 @@ h1, h2, h3 {
   border: 1px solid var(--clr-rose);
 }
 
-/* Nota manuscrita — centrada respecto a .ficha */
 .hand-note {
   font-family: var(--ff-hand);
   font-size: 1rem;
@@ -435,14 +442,13 @@ h1, h2, h3 {
 
 /* ─────────────────────────────────
    MARQUEE BAND
-   - El contenedor ocupa siempre el 100% del ancho de la
-     ventana (no está limitado por .container).
-   - La animación va directamente en CSS, no depende de
-     ninguna clase añadida por JS: así funciona siempre,
-     incluso si el script tarda en ejecutarse o falla.
-   - Las imágenes tienen ancho fijo (no solo alto), para que
-     el track calcule bien su anchura total desde el primer
-     pintado y nunca se "amontone" a la izquierda.
+   Estrategia de bucle sin hueco:
+   - El JS clona TODOS los elementos originales (serie A → serie B al final).
+   - El track contiene [A][B], cada uno de N imágenes.
+   - La animación desplaza exactamente N × (imagen + gap) píxeles:
+     al llegar al final del desplazamiento, la serie B está en la misma
+     posición visual que estaba la A al principio → reinicio imperceptible.
+   - Usamos píxeles fijos (no vw) para que el cálculo sea exacto.
 ───────────────────────────────── */
 .marquee-band {
   width: 100%;
@@ -451,41 +457,82 @@ h1, h2, h3 {
   border-top: 1px solid var(--clr-rose);
   border-bottom: 1px solid var(--clr-rose);
   padding-block: .75rem;
+  position: relative;
+}
+
+/* Degradados en los bordes para efecto de fade */
+.marquee-band::before,
+.marquee-band::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 6rem;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.marquee-band::before {
+  left: 0;
+  background: linear-gradient(to right, var(--clr-bg-soft) 0%, transparent 100%);
+}
+.marquee-band::after {
+  right: 0;
+  background: linear-gradient(to left, var(--clr-bg-soft) 0%, transparent 100%);
 }
 
 .marquee-band__track {
+  list-style: none;
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  /* gap: 0 — el espaciado lo gestionamos con padding en los <li>
+     para que el cálculo del desplazamiento sea siempre exacto */
+  gap: 0;
   width: max-content;
-  will-change: transform;
-  animation: marquee-slide 32s linear infinite;
+  animation: marquee-slide var(--marquee-duration) linear infinite;
+}
+
+.marquee-band__track li {
+  flex-shrink: 0;
+  /* Cada ítem ocupa: imagen (72px) + gap (30px) = 102px exactos */
+  padding-inline: calc(var(--marquee-item-gap) / 2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .marquee-band__track img {
-  height: 72px;
-  width: 72px;
+  height: var(--marquee-item-size);
+  width: var(--marquee-item-size);
   border-radius: var(--radius-md);
   object-fit: cover;
-  flex: 0 0 auto;
+  flex-shrink: 0;
   border: 1px solid var(--clr-rose);
   box-shadow: var(--shadow-card);
   display: block;
 }
 
+/*
+  Desplazamiento = N elementos × (tamaño imagen + gap total por ítem)
+  = var(--marquee-elements) × var(--marquee-item-total)
+  Esto es exactamente el ancho de la serie A, así que al llegar al 100%
+  la serie B ocupa el lugar de A y el navegador reinicia sin salto.
+*/
 @keyframes marquee-slide {
   from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  to   { transform: translateX(calc(-1 * var(--marquee-elements) * var(--marquee-item-total))); }
 }
 
-/* Pausa al pasar el ratón por encima, sin depender de JS */
 .marquee-band:hover .marquee-band__track {
   animation-play-state: paused;
 }
 
 @media (max-width: 640px) {
-  .marquee-band__track img { height: 56px; width: 56px; }
-  .marquee-band__track { gap: .85rem; animation-duration: 22s; }
+  :root {
+    --marquee-item-size: 56px;
+    --marquee-item-gap:  30px;
+  }
+  .marquee-band::before,
+  .marquee-band::after { width: 3rem; }
 }
 
 /* ─────────────────────────────────
@@ -727,7 +774,6 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   line-height: 1.5;
 }
 
-/* Feature list */
 .feature-list {
   display: flex;
   flex-direction: column;
@@ -750,7 +796,6 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   line-height: 1.1;
 }
 
-/* Precios */
 .price {
   font-family: var(--ff-display);
   display: block;
@@ -846,7 +891,6 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   margin-bottom: 1.75rem;
 }
 
-/* Formulario */
 .modal-form { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 1.25rem; }
 .form-group { display: flex; flex-direction: column; gap: .4rem; }
 .form-group label { font-size: .85rem; font-weight: 600; color: var(--clr-brown-dk); }
@@ -870,7 +914,6 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
 .form-group textarea:focus { border-color: var(--clr-accent); }
 .form-counter { font-size: .75rem; color: var(--clr-muted); text-align: right; margin-top: .2rem; }
 
-/* Confirmación */
 .modal-confirm { text-align: center; padding: 1rem 0; }
 .modal-confirm__icon {
   width: 3.5rem;
@@ -894,10 +937,10 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
     var(--clr-bg);
   border-top: 1px solid var(--clr-rose);
 }
+
 /* ─────────────────────────────────
-   Carrousel 2
+   CARRUSEL 2
 ───────────────────────────────── */
-/* ── CARRUSEL 2 ── */
 .carousel2 {
   position: relative;
   margin-top: 2rem;
@@ -980,6 +1023,7 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   .carousel2__btn--prev { left: 0; }
   .carousel2__btn--next { right: 0; }
 }
+
 /* ─────────────────────────────────
    FOOTER
 ───────────────────────────────── */
@@ -1053,6 +1097,7 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   .footer__inner { align-items: flex-start; flex-direction: column; }
   .footer__social-block { flex-direction: column; align-items: flex-start; gap: .4rem; }
 }
+
 /* ── MODALES LEGALES ── */
 .legal-overlay {
   display: none;
@@ -1127,6 +1172,7 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   .legal-modal__header { padding: 1.25rem 1.25rem .75rem; }
   .legal-modal__body   { padding: 1.25rem; }
 }
+
 /* ─────────────────────────────────
    RESPONSIVE
 ───────────────────────────────── */
@@ -1208,8 +1254,4 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   .footer__inner { flex-direction: column; align-items: flex-start; }
   .pricing-grid .card:nth-child(2) { order: 3; }
   .pricing-grid .card:nth-child(3) { order: 2; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
 }

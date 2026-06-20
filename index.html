@@ -85,54 +85,31 @@
 
     <!-- BANDA MARQUEE (filósofos) -->
     <div class="marquee-band" aria-hidden="true">
-      <div class="marquee-band__track">
-        <!-- Serie 1 -->
-        <img src="assets/aristotle.webp" alt="">
-        <img src="assets/ayn rand.webp" alt="">
-        <img src="assets/kant.webp" alt="">
-        <img src="assets/Dostoevsky.webp" alt="">
-        <img src="assets/hypatia.webp" alt="">
-        <img src="assets/filosofa.webp" alt="">
-        <img src="assets/marx.webp" alt="">
-        <img src="assets/nietzche.png" alt="">
-        <img src="assets/simone weil.webp" alt="">
-        <img src="assets/kierkegaard.png" alt="">
-        <img src="assets/sigmund-freud.webp" alt="">
-        <img src="assets/maria zambrano.webp" alt="">
-        <img src="assets/schopenhauer.webp" alt="">
-        <img src="assets/tales de mileto.jpg" alt="">
-        <img src="assets/pitagoras.jpg" alt="">
-        <img src="assets/sartre.jpg" alt="">
-        <img src="assets/hume.jpg" alt="">
-        <img src="assets/maquiavelo.webp" alt="">
-        <img src="assets/tomas de aquino.webp" alt="">
-        <img src="assets/platon.webp" alt="">
-        <img src="assets/descartes.jpg" alt="">
-        <img src="assets/voltaire.png" alt="">
-        <!-- Serie 2 — copia exacta, necesaria para el bucle infinito -->
-        <img src="assets/aristotle.webp" alt="">
-        <img src="assets/ayn rand.webp" alt="">
-        <img src="assets/kant.webp" alt="">
-        <img src="assets/Dostoevsky.webp" alt="">
-        <img src="assets/hypatia.webp" alt="">
-        <img src="assets/filosofa.webp" alt="">
-        <img src="assets/marx.webp" alt="">
-        <img src="assets/nietzsche.webp" alt="">
-        <img src="assets/simone weil.webp" alt="">
-        <img src="assets/kierkegaard.webp" alt="">
-        <img src="assets/sigmund-freud.webp" alt="">
-        <img src="assets/maria zambrano.webp" alt="">
-        <img src="assets/schopenhauer.webp" alt="">
-        <img src="assets/tales de mileto.jpg" alt="">
-        <img src="assets/pitagoras.jpg" alt="">
-        <img src="assets/sartre.jpg" alt="">
-        <img src="assets/hume.jpg" alt="">
-        <img src="assets/maquiavelo.webp" alt="">
-        <img src="assets/tomas de aquino.webp" alt="">
-        <img src="assets/platon.webp" alt="">
-        <img src="assets/descartes.jpg" alt="">
-        <img src="assets/voltaire.png" alt="">
-      </div>
+      <ul class="marquee-band__track" id="marquee-track">
+        <li><img src="assets/aristotle.webp" alt=""></li>
+        <li><img src="assets/ayn rand.webp" alt=""></li>
+        <li><img src="assets/kant.webp" alt=""></li>
+        <li><img src="assets/Dostoevsky.webp" alt=""></li>
+        <li><img src="assets/beauvoir.webp"></li>
+        <li><img src="assets/marx.webp" alt=""></li>
+        <li><img src="assets/nietzche.png" alt=""></li>
+        <li><img src="assets/simoneWeil.webp" alt=""></li>
+        <li><img src="assets/kierkegaard.png" alt=""></li>
+        <li><img src="assets/sigmund-freud.webp" alt=""></li>
+        <li><img src="assets/hypatia.webp" alt=""></li>
+        <li><img src="assets/schopenhauer.webp" alt=""></li>
+        <li><img src="assets/tales de mileto.jpg" alt=""></li>
+        <li><img src="assets/arendt.webp" alt=""></li>
+        <li><img src="assets/pitagoras.jpg" alt=""></li>
+        <li><img src="assets/sartre.jpg" alt=""></li>
+        <li><img src="assets/hume.jpg" alt=""></li>
+        <li><img src="assets/maquiavelo.webp" alt=""></li>
+        <li><img src="assets/tomas de aquino.webp" alt=""></li>
+        <li><img src="assets/platon.webp" alt=""></li>
+        <li><img src="assets/maria zambrano.webp" alt=""></li>
+        <li><img src="assets/descartes.jpg" alt=""></li>
+        <li><img src="assets/voltaire.png" alt=""></li>
+      </ul>
     </div>
 
     <!-- SOBRE MÍ -->
@@ -457,6 +434,7 @@
       </div>
     </div>
   </footer>
+
   <!-- ── MODALES LEGALES ── -->
   <div class="legal-overlay" id="legal-overlay" aria-hidden="true">
     <div class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
@@ -467,6 +445,7 @@
       <div class="legal-modal__body" id="legal-body"></div>
     </div>
   </div>
+
   <script>
     // Active nav highlight
     const navLinks = document.querySelectorAll('.nav-links a');
@@ -536,6 +515,7 @@
       });
     });
   </script>
+
   <script>
     // ── Modales legales ──
     const legalContent = {
@@ -629,6 +609,7 @@
       if (e.key === 'Escape') closeLegalModal();
     });
   </script>
+
   <script>
     // ── Carrusel 2 (testimonios) ──
     (function () {
@@ -650,7 +631,7 @@
 
       const allItems = () => Array.from(track.querySelectorAll('.carousel2__item'));
 
-      let current = total; // apunta al primer item real
+      let current = total;
       let autoTimer = null;
 
       function getItems() { return allItems(); }
@@ -711,5 +692,30 @@
       startAuto();
     })();
   </script>
+
+  <script>
+    // ── Marquee band (bucle infinito sin huecos) ──
+    (function () {
+      const track = document.getElementById('marquee-track');
+      if (!track) return;
+
+      // Guardamos los elementos originales antes de clonar
+      const originals = Array.from(track.children);
+      const count = originals.length;
+
+      // Clonamos TODOS los elementos originales y los añadimos al final.
+      // Así el track tiene: [serie A] + [serie B clonada]
+      // La animación desplaza exactamente el ancho de la serie A
+      // y al llegar al final el navegador ya tiene la serie B visible,
+      // que es idéntica a la A → salto imperceptible al reiniciar.
+      originals.forEach(li => {
+        track.appendChild(li.cloneNode(true));
+      });
+
+      // Informamos a CSS cuántos elementos tiene UNA serie (no el total)
+      document.documentElement.style.setProperty('--marquee-elements', count);
+    })();
+  </script>
+
 </body>
 </html>
