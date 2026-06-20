@@ -1,5 +1,5 @@
 /* =====================================================
-   OposFilosofía — Hoja de estilos (simplificada)
+   Valenti Oposiciones
    ===================================================== */
 
 /* ── TOKENS ── */
@@ -827,53 +827,63 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
     var(--clr-bg);
   border-top: 1px solid var(--clr-rose);
 }
-
-/* ── CARRUSEL ── */
-.carousel {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  grid-template-rows: auto auto;
-  align-items: center;
-  gap: .9rem;
+/* ─────────────────────────────────
+   Carrousel 2
+───────────────────────────────── */
+/* ── CARRUSEL 2 ── */
+.carousel2 {
+  position: relative;
   margin-top: 2rem;
 }
-.carousel__viewport {
+
+.carousel2__viewport {
   overflow-x: auto;
-  overflow-y: visible;
-  border: 1px solid var(--clr-rose);
-  border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, #fff 0%, #FFF9F5 100%);
-  box-shadow: var(--shadow-card);
-  padding: 1.25rem;
-  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  padding-block: 1rem;
 }
-.carousel__viewport::-webkit-scrollbar { display: none; }
-.carousel__track {
+.carousel2__viewport::-webkit-scrollbar { display: none; }
+
+.carousel2__track {
   display: flex;
-  gap: clamp(.75rem, 2vw, 1.25rem);
+  gap: clamp(1rem, 3vw, 2rem);
+  padding-inline: calc(50% - clamp(160px, 38vw, 320px));
+  width: max-content;
 }
-.carousel__item {
-  flex: 0 0 min(80%, 620px);
+
+.carousel2__item {
+  flex: 0 0 clamp(280px, 70vw, 580px);
   scroll-snap-align: center;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: #fff;
+  box-shadow: var(--shadow-card);
+  opacity: 0.3;
+  transform: scale(0.94);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+  padding: .75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .5rem;
-  opacity: .48;
-  transform: scale(.92);
-  transition: transform .6s ease, opacity .6s ease, box-shadow .6s ease;
 }
-.carousel__item--active  { opacity: 1; transform: scale(1); box-shadow: 0 0 0 1px rgba(160,97,74,.12), var(--shadow-card); }
-.carousel__item--adjacent { opacity: .78; transform: scale(.96); }
-.carousel__item img { display: block; width: 100%; max-height: 480px; object-fit: contain; border-radius: var(--radius-md); }
+.carousel2__item img {
+  width: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  display: block;
+}
+.carousel2__item--active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: var(--shadow-lift);
+}
 
-.carousel__btn {
+.carousel2__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 50%;
@@ -883,34 +893,26 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   display: grid;
   place-items: center;
   cursor: pointer;
-  transition: transform .15s, background .15s, border-color .15s, color .15s;
   box-shadow: var(--shadow-card);
   font-size: 1rem;
+  transition: transform .15s, background .15s, border-color .15s, color .15s;
+  z-index: 2;
 }
-.carousel__btn:hover { transform: translateY(-1px); background: var(--clr-bg-soft); border-color: var(--clr-accent); color: var(--clr-accent); }
-.carousel__btn--prev { justify-self: end; }
-.carousel__btn--next { justify-self: start; }
+.carousel2__btn:hover {
+  background: var(--clr-bg-soft);
+  border-color: var(--clr-accent);
+  color: var(--clr-accent);
+  transform: translateY(calc(-50% - 1px));
+}
+.carousel2__btn--prev { left: .25rem; }
+.carousel2__btn--next { right: .25rem; }
 
-.carousel__dots {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
-  padding-top: .25rem;
+@media (max-width: 640px) {
+  .carousel2__item { flex: 0 0 82vw; }
+  .carousel2__btn { width: 2.2rem; height: 2.2rem; }
+  .carousel2__btn--prev { left: 0; }
+  .carousel2__btn--next { right: 0; }
 }
-.carousel__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: var(--clr-rose-mid);
-  cursor: pointer;
-  padding: 0;
-  opacity: .5;
-  transition: background .2s, transform .2s;
-}
-.carousel__dot--active { background: var(--clr-accent); opacity: 1; transform: scale(1.25); }
-
 /* ─────────────────────────────────
    FOOTER
 ───────────────────────────────── */

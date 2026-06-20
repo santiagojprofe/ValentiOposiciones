@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="container navbar__inner">
@@ -355,23 +354,19 @@
           Te dejo con algunos de los mensajes que he recibido tanto de alumnos como padres sobre mi trabajo como docente.
         </p>
 
-        <div class="carousel" aria-label="Carrusel de opiniones recibidas">
-          <button type="button" class="carousel__btn carousel__btn--prev" id="carousel-prev" aria-label="Imagen anterior">&#10094;</button>
-          <div class="carousel__viewport" id="carousel-viewport">
-            <div class="carousel__track" id="carousel-track">
-              <figure class="carousel__item" data-index="1">
+        <div class="carousel2">
+          <div class="carousel2__viewport" id="c2-viewport">
+            <div class="carousel2__track" id="c2-track">
+              <figure class="carousel2__item">
                 <img src="assets/Facebook clau opinion.png" alt="Publicación de Facebook con opinión sobre el trabajo docente">
               </figure>
-              <figure class="carousel__item" data-index="2">
+              <figure class="carousel2__item">
                 <img src="assets/wasap clau opinion.png" alt="Mensaje de WhatsApp con opinión sobre el trabajo docente">
               </figure>
             </div>
           </div>
-          <button type="button" class="carousel__btn carousel__btn--next" id="carousel-next" aria-label="Imagen siguiente">&#10095;</button>
-          <div class="carousel__dots" id="carousel-dots">
-            <button class="carousel__dot carousel__dot--active" data-slide="0" aria-label="Ir a imagen 1"></button>
-            <button class="carousel__dot" data-slide="1" aria-label="Ir a imagen 2"></button>
-          </div>
+          <button class="carousel2__btn carousel2__btn--prev" id="c2-prev" aria-label="Anterior">&#10094;</button>
+          <button class="carousel2__btn carousel2__btn--next" id="c2-next" aria-label="Siguiente">&#10095;</button>
         </div>
       </div>
     </section>
@@ -458,95 +453,90 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
   </script>
+<script>
+(function () {
+  const viewport = document.getElementById('c2-viewport');
+  const track    = document.getElementById('c2-track');
+  const prevBtn  = document.getElementById('c2-prev');
+  const nextBtn  = document.getElementById('c2-next');
+  if (!viewport || !track) return;
 
-  <script>
-    // Carousel
-    (function () {
-      const track    = document.getElementById('carousel-track');
-      const viewport = document.getElementById('carousel-viewport');
-      const prevBtn  = document.getElementById('carousel-prev');
-      const nextBtn  = document.getElementById('carousel-next');
-      const dotsEl   = document.getElementById('carousel-dots');
-      if (!track || !viewport) return;
+  const realItems = Array.from(track.querySelectorAll('.carousel2__item'));
+  const total = realItems.length;
+  if (!total) return;
 
-      const realItems = Array.from(track.querySelectorAll('.carousel__item'));
-      const total     = realItems.length;
-      if (!total) return;
+  // Clonar para bucle infinito
+  realItems.forEach(item => {
+    track.appendChild(item.cloneNode(true));
+    track.insertBefore(item.cloneNode(true), realItems[0]);
+  });
 
-      // Clone first/last for infinite loop
-      const firstClone = realItems[0].cloneNode(true);
-      const lastClone  = realItems[total - 1].cloneNode(true);
-      [firstClone, lastClone].forEach(c => { c.setAttribute('aria-hidden', 'true'); });
-      track.insertBefore(lastClone, realItems[0]);
-      track.appendChild(firstClone);
+  const allItems = () => Array.from(track.querySelectorAll('.carousel2__item'));
 
-      const items = Array.from(track.querySelectorAll('.carousel__item'));
-      let current = 1, autoTimer = null, resetTimer = null, initialized = false;
+  // Índice lógico actual (empezamos en el primer real, que está tras los clones)
+  let current = total; // apunta al primer item real
+  let autoTimer = null;
 
-      const logicalIdx = p => p <= 0 ? total - 1 : p >= total + 1 ? 0 : p - 1;
+  function getItems() { return allItems(); }
 
-      function scrollTo(idx, smooth) {
-        const item = items[idx];
-        if (!item) return;
-        const maxLeft  = Math.max(0, track.scrollWidth - viewport.clientWidth);
-        const itemW    = item.getBoundingClientRect().width || item.offsetWidth;
-        const target   = Math.max(0, Math.min(item.offsetLeft - (viewport.clientWidth - itemW) / 2, maxLeft));
-        requestAnimationFrame(() => viewport.scrollTo({ left: target, behavior: smooth === false ? 'auto' : 'smooth' }));
+  function scrollToIndex(idx, smooth = true) {
+    const items = getItems();
+    const item = items[idx];
+    if (!item) return;
+    const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+    const viewCenter = viewport.clientWidth / 2;
+    viewport.scrollTo({ left: itemCenter - viewCenter, behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  function updateActive() {
+    const items = getItems();
+    items.forEach((item, i) => {
+      item.classList.toggle('carousel2__item--active', i === current);
+    });
+  }
+
+  function goTo(idx, smooth = true) {
+    current = idx;
+    scrollToIndex(current, smooth);
+    updateActive();
+  }
+
+  function next() {
+    goTo(current + 1);
+    // Si llegamos al final de los clones del final, saltamos silenciosamente al inicio real
+    setTimeout(() => {
+      if (current >= total * 2) {
+        current = total;
+        scrollToIndex(current, false);
+        updateActive();
       }
+    }, 520);
+  }
 
-      function markState() {
-        const active = logicalIdx(current);
-        items.forEach((item, i) => {
-          const li = logicalIdx(i);
-          item.classList.toggle('carousel__item--active', i === current);
-          item.classList.toggle('carousel__item--adjacent', li === (active - 1 + total) % total || li === (active + 1) % total);
-        });
-        if (dotsEl) {
-          dotsEl.querySelectorAll('.carousel__dot').forEach((d, i) => d.classList.toggle('carousel__dot--active', i === active));
-        }
+  function prev() {
+    goTo(current - 1);
+    // Si llegamos a los clones del inicio, saltamos silenciosamente al final real
+    setTimeout(() => {
+      if (current < total) {
+        current = total * 2 - 1;
+        scrollToIndex(current, false);
+        updateActive();
       }
+    }, 520);
+  }
 
-      function settleEdge(idx) {
-        if (resetTimer) clearTimeout(resetTimer);
-        if (idx === 0)         resetTimer = setTimeout(() => { current = total;     scrollTo(current, false); markState(); }, 620);
-        else if (idx === total + 1) resetTimer = setTimeout(() => { current = 1;    scrollTo(current, false); markState(); }, 620);
-      }
+  const startAuto = () => { stopAuto(); autoTimer = setInterval(next, 5000); };
+  const stopAuto  = () => { clearInterval(autoTimer); autoTimer = null; };
 
-      function goTo(idx, smooth) {
-        current = idx;
-        scrollTo(current, smooth);
-        markState();
-        settleEdge(current);
-      }
+  prevBtn.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
+  nextBtn.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
 
-      function initCarousel() {
-        if (initialized) return;
-        initialized = true;
-        requestAnimationFrame(() => { goTo(1, false); requestAnimationFrame(() => goTo(1, false)); });
-      }
-
-      const startAuto = () => { stopAuto(); autoTimer = setInterval(() => goTo(current + 1), 6500); };
-      const stopAuto  = () => { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } };
-
-      prevBtn.addEventListener('click', () => { goTo(current - 1, true); stopAuto(); startAuto(); });
-      nextBtn.addEventListener('click', () => { goTo(current + 1, true); stopAuto(); startAuto(); });
-      if (dotsEl) dotsEl.querySelectorAll('.carousel__dot').forEach((d, i) => d.addEventListener('click', () => { goTo(i + 1, true); stopAuto(); startAuto(); }));
-
-      viewport.addEventListener('mouseenter', stopAuto);
-      viewport.addEventListener('mouseleave', startAuto);
-      window.addEventListener('resize', () => { if (initialized) scrollTo(current, false); });
-
-      const imgs = Array.from(track.querySelectorAll('img'));
-      let pending = imgs.length;
-      if (pending) {
-        imgs.forEach(img => {
-          if (img.complete) { if (!--pending) initCarousel(); }
-          else img.addEventListener('load', () => { if (!--pending) initCarousel(); }, { once: true });
-        });
-      } else initCarousel();
-
-      window.addEventListener('load', () => { initCarousel(); startAuto(); }, { once: true });
-    })();
+  // Inicializar
+  goTo(current, false);
+  startAuto();
+})();
   </script>
 </body>
 </html>
