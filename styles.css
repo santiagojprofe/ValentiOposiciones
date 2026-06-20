@@ -269,7 +269,7 @@ h1, h2, h3 {
    HERO
 ───────────────────────────────── */
 .hero {
-  padding-block: 5rem;
+  padding-block: 2rem;
   background:
     radial-gradient(ellipse 80% 50% at 70% 40%, #EED9CE44 0%, transparent 70%),
     var(--clr-bg);
@@ -296,6 +296,7 @@ h1, h2, h3 {
 .stats {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
   padding: 1.25rem 1.5rem;
@@ -303,6 +304,7 @@ h1, h2, h3 {
   border: 1px solid var(--clr-rose);
   border-radius: var(--radius-lg);
   width: fit-content;
+  margin-inline: auto;
 }
 .stat { text-align: center; }
 .stat__value {
@@ -329,13 +331,18 @@ h1, h2, h3 {
 }
 
 /* Ficha decorativa */
-.hero__visual { position: relative; flex-shrink: 0; }
+.hero__visual {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
 .ficha {
   background: #fff;
   border: 1px solid var(--clr-rose);
   border-radius: var(--radius-xl);
-  padding: 1.75rem;
-  width: 220px;
+  padding: 1.4rem;
+  width: 190px;
   box-shadow: var(--shadow-lift);
   position: relative;
 }
@@ -395,6 +402,7 @@ h1, h2, h3 {
   font-weight: 500;
   position: absolute;
   white-space: nowrap;
+  bottom-padding: 3rem;
 }
 
 /* ─────────────────────────────────
@@ -894,13 +902,23 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
    RESPONSIVE
 ───────────────────────────────── */
 @media (max-width: 900px) {
-  .hero__inner     { grid-template-columns: 1fr; }
-  .hero__visual    { display: none; }
-  .about           { grid-template-columns: 1fr; }
-  .about__person   { flex-direction: row; text-align: left; }
-  .probability     { grid-template-columns: 1fr; }
-  .pricing-grid    { grid-template-columns: 1fr; }
-  .carousel__item  { flex: 0 0 min(86%, 560px); }
+  .hero__inner         { grid-template-columns: 1fr; }
+  .hero__visual        { display: flex; justify-content: center; margin-top: 1rem; }
+  .hero__visual .ficha { width: 180px; padding: 1rem; }
+  .hero__visual .hand-note {
+    left: 32%;
+    bottom: 2rem;
+    transform: translateX(50%) rotate(4deg);
+  }
+  .about               { grid-template-columns: 1fr; }
+  .about__person       { flex-direction: row; text-align: left; }
+  .probability         { grid-template-columns: 1fr; }
+  .pricing-grid        { grid-template-columns: 1fr; }
+  .pricing-grid .card__name,
+  .pricing-grid .card__desc {
+    text-align: center;
+  }
+  .carousel__item      { flex: 0 0 min(86%, 560px); }
 }
 
 @media (max-width: 640px) {
