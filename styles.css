@@ -740,6 +740,19 @@ details[open] .temario__arrow { transform: rotate(-135deg); }
   margin-top: 2.5rem;
 }
 
+.lead--descuento {
+  font-family: var(--ff-display);
+  font-style: italic;
+  margin-top: .5rem;
+}
+
+.lead--descuento .descuento__pct {
+  color: var(--clr-green);
+  font-size: 1.25em;
+  font-weight: 700;
+  font-style: normal;
+}
+
 .card--featured {
   border: 2px solid var(--clr-accent);
   background: linear-gradient(160deg, #fff 0%, #FDF1EA 100%);
