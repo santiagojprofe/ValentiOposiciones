@@ -1,0 +1,8 @@
+# Ignorar todo
+*
+
+# Excepciones
+!index.html
+!styles.css
+!CNAME
+!.gitignore

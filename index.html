@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valenti Oposiciones — Temario de Filosofía para Secundaria</title>
+  <link rel="icon" type="image/png" href="assets/phi%20favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="#top" class="logo"><span>Claudia</span> Valenti - Oposiciones<span> Filosofía</span> </a>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#metodo">Método</a>
+        <a href="#temario">Temario</a>
+        <a href="#precios">Precios</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#motivacion">Motivación</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <span class="badge">Oposiciones de Educación Secundaria - Filosofía</span>
+          <div class="about__person" aria-label="Perfil de Claudia Fernández García">
+            <div class="avatar">
+              <img src="assets/img/filoclaus.jpg" alt="Claudia Fernandez García">
+            </div>
+            <div>
+              <h2 class="about__name">Claudia Fernandez García</h2>
+              <p class="about__meta">Profesora de Enseñanza Secundaria, especialidad Filosofía</p>
+              <p class="about__meta">Puedes consultar mis redes sociales para saber más sobre mi.</p>
+            </div>
+            <div class="about__social-links">
+              <a class="about__social-link" href="https://www.linkedin.com/in/claudiafernandezgarcia/" target="_blank"
+                rel="noopener noreferrer">
+                <img src="assets/img/linkedin%20logo.webp" alt="Logo de LinkedIn">
+                <span>LinkedIn</span>
+              </a>
+              <a class="about__social-link" href="https://www.instagram.com/filoclaus" target="_blank"
+                rel="noopener noreferrer">
+                <img src="assets/img/instagramLogo.png" alt="Logo de Instagram">
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+          <h1 class="hero__title">Material para las oposiciones de Filosofía de educación secundaria</h1>
+          <p class="lead lead--center">
+            45 temas seleccionados, redactados desde cero y revisados para la LOMLOE.
+            Nada de fotocopias de academia: es el material con el que estudié,
+            ordenado para que tú no tengas que perder meses haciéndolo.<br>
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <span class="stat__value">45</span>
+              <span class="stat__label">temas seleccionados</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat__value">97,6<small>%</small></span>
+              <span class="stat__label">Probabilidad de caer un tema preparado</span>
+            </div>
+            <div class="stat-divider" aria-hidden="true"></div>
+            <div class="stat">
+              <span class="stat__value">LOMLOE</span>
+              <span class="stat__label">normativa al día</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANDA MARQUEE (filósofos) -->
+    <div class="marquee-band" aria-hidden="true">
+      <ul class="marquee-band__track" id="marquee-track">
+        <li><img src="assets/img/aristotle.webp" alt=""></li>
+        <li><img src="assets/img/ayn rand.webp" alt=""></li>
+        <li><img src="assets/img/kant.webp" alt=""></li>
+        <li><img src="assets/img/Dostoevsky.webp" alt=""></li>
+        <li><img src="assets/img/beauvoir.webp"></li>
+        <li><img src="assets/img/marx.webp" alt=""></li>
+        <li><img src="assets/img/nietzche.png" alt=""></li>
+        <li><img src="assets/img/simoneWeil.webp" alt=""></li>
+        <li><img src="assets/img/kierkegaard.png" alt=""></li>
+        <li><img src="assets/img/sigmund-freud.webp" alt=""></li>
+        <li><img src="assets/img/hypatia.webp" alt=""></li>
+        <li><img src="assets/img/Schopenhauer.webp" alt=""></li>
+        <li><img src="assets/img/tales de mileto.jpg" alt=""></li>
+        <li><img src="assets/img/arendt.webp" alt=""></li>
+        <li><img src="assets/img/pitagoras.jpg" alt=""></li>
+        <li><img src="assets/img/sartre.jpg" alt=""></li>
+        <li><img src="assets/img/hume.jpg" alt=""></li>
+        <li><img src="assets/img/maquiavelo.webp" alt=""></li>
+        <li><img src="assets/img/tomas de aquino.webp" alt=""></li>
+        <li><img src="assets/img/platon.webp" alt=""></li>
+        <li><img src="assets/img/maria zambrano.webp" alt=""></li>
+        <li><img src="assets/img/descartes.jpg" alt=""></li>
+        <li><img src="assets/img/voltaire.png" alt=""></li>
+      </ul>
+    </div>
+
+    <!-- SOBRE MÍ -->
+    <section class="section section--soft section--tight-top" id="sobre-mi">
+      <p class="eyebrow">Sobre Mí</p>
+      <div class="container about">
+        <div class="hero__visual" aria-hidden="true">
+          <div class="ficha ficha--tilted">
+            <div class="ficha__cover" aria-hidden="true">
+              <a href="assets/aristoteles.webp" target="_blank" rel="noopener noreferrer" tabindex="-1">
+                <img src="assets/img/aristoteles.webp" alt="Portada del tema 50: La Naturaleza en Aristóteles">
+              </a>
+            </div>
+            <div class="ficha__ring"></div>
+            <span class="ficha__eyebrow">Tema 50</span>
+            <h3 class="ficha__title">La Naturaleza en Aristóteles</h3>
+            <p class="ficha__lines">
+              <span></span><span></span><span></span><span class="short"></span>
+            </p>
+            <span class="ficha__tag">Edición digitalizada</span>
+          </div>
+          <span class="hand-note">¡el mismo con el que aprobé!</span>
+        </div>
+
+        <div class="about__content">
+          <h2 class="section__title">Preparé la oposición con academia, sé lo que cuesta y tú no lo necesitarás.</h2>
+          <p class="about__bio">
+            Soy Claudia, profesora de Filosofía desde 2021. Durante los años que
+            preparé la oposición elaboré mi propio temario. Los recopilatorios
+            que encontraba eran demasiado largos, repetidos entre temas o, directamente,
+            estaban desactualizados.<br>
+            Obtuve una nota de <b>sobresaliente</b> tanto en las oposiciones de estabilización de 2023
+            como en las de 2025, donde conseguí la plaza.<br>
+            Cuando aprobé, decidí ordenar y pulir ese material
+            para que otras personas no tengan que empezar desde cero como hice yo.
+            Hoy sigo dando clase y, en paralelo, acompaño a opositores de toda España.
+          </p>
+
+          <ul class="checklist">
+            <li><span class="icon-check" aria-hidden="true">✓</span>Temario propio, escrito por mí, no es un
+              recopilatorio de varias fuentes</li>
+            <li><span class="icon-check" aria-hidden="true">✓</span>Actualizado a la LOMLOE y revisado en cada
+              convocatoria</li>
+            <li><span class="icon-check" aria-hidden="true">✓</span>Adaptado al currículo y a la legislación de tu
+              comunidad autónoma</li>
+            <li><span class="icon-check" aria-hidden="true">✓</span>Acompañamiento y orientación por correo o por
+              WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÉTODO -->
+    <section class="section" id="metodo">
+      <div class="container">
+        <p class="eyebrow">Método</p>
+        <h2 class="section__title section__title--center">¿Por qué 45 temas y no los 71?</h2>
+        <p class="lead lead--center">
+          El examen de la oposición de Filosofía propone <strong>4 temas al azar</strong> de
+          un temario oficial de <strong>71</strong>, y basta con desarrollar bien uno de ellos.
+          Preparar los 45 temas con más peso en el currículo deja la probabilidad de que te toque al menos uno que
+          domines
+          prácticamente al máximo.
+        </p>
+
+        <div class="probability">
+          <div class="highlight-box">
+            <span class="highlight-box__figure">97,6<small>%</small></span>
+            <span class="highlight-box__caption">de probabilidad de que al menos uno de los<br>4 temas del examen esté
+              entre tus 45 temas</span>
+          </div>
+          <div class="card">
+            <p class="card__label">Probabilidad según nº de temas preparados</p>
+            <img class="chart-img" src="assets/img/grafica-45-temas.png"
+              alt="Gráfica de probabilidad acumulada para 45 temas preparados" loading="lazy">
+          </div>
+        </div>
+
+        <p class="footnote">
+          A partir de esta cantidad, seguir ampliando apenas mejora tus opciones
+          pero sí te quita meses de estudio. Por eso el temario se queda justo ahí.
+        </p>
+      </div>
+    </section>
+
+    <!-- TEMARIO ------------------------------------- -->
+    <section class="section section--soft section--tight-top" id="temario">
+      <div class="container">
+        <p class="eyebrow">Temario</p>
+        <h2 class="section__title section__title--center">Temas disponibles</h2>
+
+        <details class="temario">
+          <summary class="temario__trigger">
+            Ver todos los temas
+            <span class="temario__arrow" aria-hidden="true"></span>
+          </summary>
+
+          <ol class="temario__lista">
+            <li class="temario__bloque">Bloque 1 - Lógica y Lenguaje</li>
+            <li class="tema"><span class="tema__num">3</span><span class="tema__titulo">La comunicación humana y el
+                lenguaje: lenguaje natural y lenguajes formales.</span><span class="tema__check"
+                aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">4</span><span class="tema__titulo">Sentido y referencia. Teorías
+                del significado.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">5</span><span class="tema__titulo">De la lógica clásica a la lógica
+                simbólica.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">11</span><span class="tema__titulo">Conocimiento y lenguaje: el
+                problema de los conceptos universales.</span><span class="tema__check" aria-label="Incluido">✓</span>
+            </li>
+
+            <li class="temario__bloque">Bloque 2 - Metafísica y sus problemas fundamentales</li>
+            <li class="tema"><span class="tema__num">14</span><span class="tema__titulo">La Metafísica como
+                problema.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">17</span><span class="tema__titulo">Las categorías y los diversos
+                sistemas categoriales.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">18</span><span class="tema__titulo">Los distintos planteamientos en
+                torno al concepto de sustancia. Valoración crítica del principio de causalidad.</span><span
+                class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">20</span><span class="tema__titulo">El debate histórico en torno a
+                la relación entre la fe y la razón.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+
+            <li class="temario__bloque">Bloque 3 - Antropología y Psicología</li>
+            <li class="tema"><span class="tema__num">24</span><span class="tema__titulo">La antropología como campo de
+                estudio. Diversas concepciones de la antropología.</span><span class="tema__check"
+                aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">25</span><span class="tema__titulo">La antropogénesis: naturaleza y
+                cultura.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">26</span><span class="tema__titulo">Las distintas concepciones de
+                la Psicología como ciencia.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="temario__bloque">Bloque 4 - Política y Ética</li>
+            <li class="tema"><span class="tema__num">32</span><span class="tema__titulo">Origen y naturaleza en la
+                sociedad.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">41</span><span class="tema__titulo">Éticas materiales y Éticas
+                formales.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">43</span><span class="tema__titulo">Principales problemas éticos en
+                la actividad científica y técnica y en la convivencia social de nuestro tiempo.</span><span
+                class="tema__check" aria-label="Incluido">✓</span></li>
+
+            <li class="temario__bloque">Bloque 5 - Historia de la Filosofía</li>
+            <li class="tema"><span class="tema__num">46</span><span class="tema__titulo">La historia de la filosofía
+                como problema filosófico.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">47</span><span class="tema__titulo">Los modelos de explicación
+                racional en los presocráticos.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">48</span><span class="tema__titulo">El debate ético-político en
+                Sócrates y los sofistas.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">49</span><span class="tema__titulo">La justicia en la Polis como
+                objetivo de la filosofía de Platón.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">50</span><span class="tema__titulo">La Naturaleza en
+                Aristóteles.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">51</span><span class="tema__titulo">El desarrollo de la ciencia en
+                el pensamiento helenístico.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">52</span><span class="tema__titulo">La síntesis escolástica de
+                Santo Tomás de Aquino.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">53</span><span class="tema__titulo">El nominalismo y la ciencia del
+                siglo XIV.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">54</span><span class="tema__titulo">La revolución científica.
+                Galileo y Newton.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">55</span><span class="tema__titulo">El método
+                cartesiano.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">56</span><span class="tema__titulo">El sujeto ético-político en
+                Spinoza.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">57</span><span class="tema__titulo">Ciencia y conocimiento en
+                Leibniz.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">58</span><span class="tema__titulo">El empirismo y las ciencias
+                morales: Locke y Hume.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">59</span><span class="tema__titulo">El uso teórico de la razón en
+                Kant.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">60</span><span class="tema__titulo">El uso práctico de la razón en
+                Kant.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">61</span><span class="tema__titulo">La filosofía de Hegel: sujeto,
+                sistema y estado.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">62</span><span class="tema__titulo">El positivismo y el avance
+                científico del siglo XIX.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">63</span><span class="tema__titulo">La crítica de Marx al
+                capitalismo y su influjo en la historia del pensamiento occidental.</span><span class="tema__check"
+                aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">64</span><span class="tema__titulo">Nietzsche y la crisis de la
+                cultura occidental.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">65</span><span class="tema__titulo">La fenomenología de E.
+                Husserl.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">66</span><span class="tema__titulo">Freud: el psicoanálisis como
+                crítica de la cultura occidental.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">67</span><span class="tema__titulo">El problema del ser en
+                Heidegger y en las filosofías de la existencia.</span><span class="tema__check"
+                aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">68</span><span class="tema__titulo">L. Wittgenstein y B. Russell:
+                la corriente analítica de la filosofía.</span><span class="tema__check" aria-label="Incluido">✓</span>
+            </li>
+            <li class="tema"><span class="tema__num">69</span><span class="tema__titulo">Razón y sociedad en la escuela
+                de Frankfurt y en K.R. Popper.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">70</span><span class="tema__titulo">Ortega y Gasset y la filosofía
+                del exilio español.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+            <li class="tema"><span class="tema__num">71</span><span class="tema__titulo">La filosofía de "fin de siglo":
+                hermenéutica y postmodernidad.</span><span class="tema__check" aria-label="Incluido">✓</span></li>
+          </ol>
+        </details>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="section section--tight-top" id="precios">
+      <div class="container">
+        <p class="eyebrow">Precios</p>
+        <h2 class="section__title section__title--center">Elige lo que necesitas para tu preparación</h2>
+        <p class="lead lead--center">
+          Todo el material se entrega en formato digitalizado, para que puedas
+          consultarlo e imprimirlo en cualquier parte.
+        </p>
+        <div class="pricing-grid">
+          <article class="card">
+            <h3 class="card__name">Temario Teórico</h3>
+            <p class="card__desc">Los 45 temas listos para estudiar.</p>
+            <ul class="feature-list">
+              <li>45 temas redactados desde cero</li>
+              <li>Actualizado a la LOMLOE</li>
+              <li>Adaptado al currículo actual de tu Comunidad Autónoma</li>
+              <li>Temas digitalizados en PDF para mayor comodidad</li>
+              <li>1 Tema teórico en PDF = 9€</li>
+              <li>1 bloque = 8€ por tema</li>
+              <li>Todos los bloques = 7€ por tema</li>
+            </ul>
+            <p class="price price--old">405€</p>
+            <p class="price price--new">315€</p>
+          </article>
+
+          <article class="card card--featured">
+            <span class="card__badge">Destacado</span>
+            <h3 class="card__name">Pack completo</h3>
+            <p class="card__desc">Temario y Programación didáctica, listos y con descuento</p>
+            <ul class="feature-list">
+              <li>Los 45 temas completos listos para estudiar</li>
+              <li>Programación didáctica adaptada a la LOMLOE</li>
+              <li>12 Unidades didácticas completas y llamativas</li>
+              <li>Precio especial con los máximos descuentos tanto de los temas como de la programación</li>
+              <li>Acceso a 1 hora de video explicativo sobre la programación, unidades y cómo exponer</li>
+              <li>Atención por correo o WhatsApp</li>
+            </ul>
+            <p class="price price--highlight">¡Precio más rebajado de cada opción!</p>
+          </article>
+
+          <article class="card">
+            <h3 class="card__name">Programación Didáctica</h3>
+            <p class="card__desc">Programación didáctica, con la que obtuve un sobresaliente.</p>
+            <ul class="feature-list">
+              <li>Programación didáctica</li>
+              <li>12 Unidades didácticas completas y llamativas</li>
+              <li>Programación didáctica = 90€</li>
+              <li>Unidad didáctica = 5€ cada una</li>
+              <li>Todas las unidades = 3€ cada unidad</li>
+              <li>1 hora de video explicativo sobre la programación, unidades y cómo exponerlo = 15€</li>
+            </ul>
+            <p class="price price--old">165€</p>
+            <p class="price price--new">141€</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto">
+      <div class="container contacto__inner">
+        <p class="eyebrow">Contacto</p>
+        <h2 class="contacto__title">¿Hablamos antes de decidirte?</h2>
+
+        <div class="contacto__form-panel">
+          <div class="modal">
+            <div id="modal-form-wrap">
+              <h2 class="modal__title modal__title--center">Empieza tu camino hacia la plaza</h2>
+              <p class="modal__subtitle">Rellena el formulario y te respondo por email (revisa Spam!).</p>
+
+              <form id="contacto-form" action="https://api.web3forms.com/submit" method="POST" class="modal-form">
+                <div class="form-group">
+                  <label for="f-nombre">Nombre</label>
+                  <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                  <label for="f-email">Email</label>
+                  <input type="email" id="f-email" name="email" placeholder="tucorreo@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="f-interes">Me interesa</label>
+                  <select id="f-interes" name="producto" required>
+                    <option value="" disabled selected hidden>Elige una opción</option>
+                    <option value="Temario">Temario completo</option>
+                    <option value="programación">Programación Didáctica</option>
+                    <option value="Pack completo">Pack completo</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+                <div class="form-group" id="f-comentario-group" style="display: none;">
+                  <label for="f-comentario">Comentario</label>
+                  <textarea id="f-comentario" name="comentario" rows="4" maxlength="500"
+                    placeholder="Escribe aquí cualquier detalle adicional..."></textarea>
+                  <span class="form-counter" id="f-comentario-counter">0 / 500</span>
+                </div>
+                <input type="hidden" name="access_key" value="316674b7-7df1-4888-a75e-f0556bceaf0a">
+                <input type="hidden" name="subject" value="Nueva solicitud — OposFilosofía">
+                <button type="submit" class="btn btn--primary btn--full" id="btn-submit">Enviar solicitud</button>
+                <p class="form-group__label">Si no encuentras lo que buscas, envíame un email a
+                  <strong>valenti.opos@gmail.com</strong></p>
+              </form>
+            </div>
+
+            <div class="modal-confirm" id="modal-confirm" style="display:none;">
+              <div class="modal-confirm__icon">✓</div>
+              <h2 class="modal__title">¡Mensaje enviado!</h2>
+              <p class="modal__subtitle">Te respondo por correo con toda la información sobre tu selección (revisa
+                Spam!).</p>
+              <button type="button" class="btn btn--primary btn--full" style="margin-top:1rem;"
+                onclick="document.getElementById('modal-form-wrap').style.display='block'; document.getElementById('modal-confirm').style.display='none'; document.getElementById('contacto-form').reset(); document.getElementById('btn-submit').textContent='Enviar solicitud'; document.getElementById('btn-submit').disabled=false; document.getElementById('f-interes').value=''; document.getElementById('f-comentario-group').style.display='none'; document.getElementById('f-comentario').value=''; document.getElementById('f-comentario-counter').textContent='0 / 500';">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTIVACIÓN -->
+    <section class="section section--soft section--tight-top motivation" id="motivacion">
+      <div class="container">
+        <p class="eyebrow">Motivación</p>
+        <h2 class="section__title section__title--center">El esfuerzo tiene un motivo</h2>
+        <p class="lead lead--center">
+          Conseguir tu plaza supone un gran esfuerzo, pero también una gran recompensa, no solo de tranquilidad o
+          monetaria.
+          Te dejo con algunos de los mensajes que he recibido tanto de alumnos como padres sobre mi trabajo como
+          docente.
+        </p>
+
+        <div class="carousel2">
+          <div class="carousel2__viewport" id="c2-viewport">
+            <div class="carousel2__track" id="c2-track">
+              <figure class="carousel2__item">
+                <img src="assets/img/Facebook clau opinion.png"
+                  alt="Publicación de Facebook con opinión sobre el trabajo docente">
+              </figure>
+              <figure class="carousel2__item">
+                <img src="assets/img/wasap clau opinion.png"
+                  alt="Mensaje de WhatsApp con opinión sobre el trabajo docente">
+              </figure>
+            </div>
+          </div>
+          <button class="carousel2__btn carousel2__btn--prev" id="c2-prev" aria-label="Anterior">&#10094;</button>
+          <button class="carousel2__btn carousel2__btn--next" id="c2-next" aria-label="Siguiente">&#10095;</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; Valenti Oposiciones — Claudia Fernandez García. Todos los derechos reservados.</p>
+
+      <div class="footer__social-block">
+        <p class="footer__social-title">Redes Sociales</p>
+        <div class="footer__socials">
+          <a href="https://www.linkedin.com/in/claudiafernandezgarcia/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn">
+            <img src="assets/img/linkedin%20logo.webp" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com/filoclaus" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram">
+            <img src="assets/img/instagramLogo.png" alt="Instagram">
+          </a>
+          <a href="https://www.goodreads.com/user/show/41455384-claudia-valenti" target="_blank"
+            rel="noopener noreferrer" aria-label="Goodreads">
+            <img src="assets/img/goodreadsfavicon.png" alt="Goodreads">
+          </a>
+          <a href="https://www.caerellia.com/" target="_blank" rel="noopener noreferrer" aria-label="Caerellia">
+            <img src="assets/img/caerelliafavicon.jpg" alt="Caerellia">
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <button class="footer__legal-btn" data-modal="privacidad">Política de privacidad</button>
+        <button class="footer__legal-btn" data-modal="terminos">Términos y condiciones</button>
+        <button class="footer__legal-btn" data-modal="aviso">Aviso legal</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── MODALES LEGALES ── -->
+  <div class="legal-overlay" id="legal-overlay" aria-hidden="true">
+    <div class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+      <div class="legal-modal__header">
+        <h2 class="legal-modal__title" id="legal-modal-title"></h2>
+        <button class="legal-modal__close" id="legal-close" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="legal-modal__body" id="legal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    // Active nav highlight
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = Array.from(document.querySelectorAll('main section[id], section[id]'));
+    const setActiveNav = () => {
+      let current = 'top';
+      const offset = window.innerHeight * 0.28;
+      sections.forEach(s => { if (s.getBoundingClientRect().top <= offset) current = s.id; });
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${current}`));
+    };
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    window.addEventListener('load', setActiveNav);
+    window.addEventListener('resize', setActiveNav);
+
+    // Contact form
+    const form = document.getElementById('contacto-form');
+    const formWrap = document.getElementById('modal-form-wrap');
+    const confirm = document.getElementById('modal-confirm');
+    const btnSubmit = document.getElementById('btn-submit');
+    const select = document.getElementById('f-interes');
+    const textarea = document.getElementById('f-comentario');
+    const textareaGroup = document.getElementById('f-comentario-group');
+    const counter = document.getElementById('f-comentario-counter');
+
+    function toggleComentario() {
+      const show = select.value === 'Otro';
+      textareaGroup.style.display = show ? 'flex' : 'none';
+      textarea.required = show;
+      if (!show) {
+        textarea.value = '';
+        counter.textContent = '0 / 500';
+      }
+    }
+
+    textarea.addEventListener('input', () => {
+      counter.textContent = `${textarea.value.length} / 500`;
+    });
+
+    select.addEventListener('change', toggleComentario);
+    toggleComentario();
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      btnSubmit.textContent = 'Enviando...';
+      btnSubmit.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+        if (res.ok) {
+          formWrap.style.display = 'none';
+          confirm.style.display = 'block';
+          form.reset();
+          toggleComentario();
+        } else {
+          btnSubmit.textContent = 'Error al enviar. Inténtalo de nuevo.';
+          btnSubmit.disabled = false;
+        }
+      } catch {
+        btnSubmit.textContent = 'Error de conexión. Inténtalo de nuevo.';
+        btnSubmit.disabled = false;
+      }
+    });
+
+    // Cerrar menú hamburguesa al pulsar un enlace de navegación
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('menu-toggle').checked = false;
+      });
+    });
+  </script>
+
+  <script>
+    // ── Modales legales ──
+    const legalContent = {
+      privacidad: {
+        titulo: 'Política de privacidad',
+        cuerpo: `
+          <h3>Responsable del tratamiento</h3>
+          <p>Claudia Fernandez García, con email de contacto <strong>valenti.opos@gmail.com</strong>, es la responsable del tratamiento de los datos personales recogidos a través de este sitio web.</p>
+
+          <h3>Datos que se recogen</h3>
+          <p>A través del formulario de contacto se recogen nombre, dirección de correo electrónico y el producto de interés indicado. Estos datos se utilizan exclusivamente para responder a tu solicitud.</p>
+
+          <h3>Base legal</h3>
+          <p>El tratamiento se basa en el consentimiento que prestas al enviar el formulario. Puedes retirar dicho consentimiento en cualquier momento escribiéndonos al correo indicado.</p>
+
+          <h3>Conservación de datos</h3>
+          <p>Los datos se conservan únicamente durante el tiempo necesario para gestionar tu solicitud y, en su caso, la relación comercial derivada de ella.</p>
+
+          <h3>Tus derechos</h3>
+          <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición y portabilidad escribiendo a <strong>valenti.opos@gmail.com</strong>. Si consideras que el tratamiento no es conforme a la normativa, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank">aepd.es</a>).</p>
+        `
+      },
+      terminos: {
+        titulo: 'Términos y condiciones',
+        cuerpo: `
+          <h3>Objeto</h3>
+          <p>Los presentes términos regulan la adquisición de materiales didácticos para la preparación de oposiciones de Filosofía de Educación Secundaria ofrecidos por Claudia Fernandez García a través de este sitio web.</p>
+
+          <h3>Entrega del material</h3>
+          <p>Una vez confirmado el pago, el material se enviará en formato PDF al correo electrónico indicado en un plazo máximo de 48 horas laborables.</p>
+
+          <h3>Uso del material</h3>
+          <p>El material adquirido es para uso personal y exclusivo del comprador. Queda prohibida su reproducción, distribución o puesta a disposición de terceros, total o parcialmente, sin autorización expresa.</p>
+
+          <h3>Política de devoluciones</h3>
+          <p>Dado que se trata de contenido digital de descarga inmediata, no se admiten devoluciones una vez que el archivo ha sido enviado, salvo error imputable a la vendedora.</p>
+
+          <h3>Legislación aplicable</h3>
+          <p>Estos términos se rigen por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales del domicilio del consumidor.</p>
+        `
+      },
+      aviso: {
+        titulo: 'Aviso legal',
+        cuerpo: `
+          <h3>Titular del sitio web</h3>
+          <p>Claudia Fernandez García<br>
+          Correo electrónico: <strong>valenti.opos@gmail.com</strong></p>
+
+          <h3>Objeto</h3>
+          <p>Este sitio web tiene como finalidad presentar y comercializar materiales para la preparación de oposiciones de Filosofía de Educación Secundaria en España.</p>
+
+          <h3>Propiedad intelectual</h3>
+          <p>Todos los contenidos de este sitio web (textos, imágenes y materiales descargables) son propiedad de Claudia Fernandez García y están protegidos por la legislación de propiedad intelectual vigente. Queda prohibida su reproducción sin autorización expresa.</p>
+
+          <h3>Exclusión de responsabilidad</h3>
+          <p>La titular no se responsabiliza de los daños que pudieran derivarse del uso inadecuado del material adquirido ni de la interpretación que cada opositor haga de su contenido respecto a los requisitos específicos de cada convocatoria.</p>
+        `
+      }
+    };
+
+    const legalOverlay = document.getElementById('legal-overlay');
+    const legalTitle = document.getElementById('legal-modal-title');
+    const legalBody = document.getElementById('legal-body');
+    const legalClose = document.getElementById('legal-close');
+
+    document.querySelectorAll('.footer__legal-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.modal;
+        const content = legalContent[key];
+        if (!content) return;
+        legalTitle.textContent = content.titulo;
+        legalBody.innerHTML = content.cuerpo;
+        legalOverlay.classList.add('open');
+        legalOverlay.setAttribute('aria-hidden', 'false');
+        legalClose.focus();
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLegalModal() {
+      legalOverlay.classList.remove('open');
+      legalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    legalClose.addEventListener('click', closeLegalModal);
+    legalOverlay.addEventListener('click', e => {
+      if (e.target === legalOverlay) closeLegalModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLegalModal();
+    });
+  </script>
+
+  <script>
+    // ── Carrusel 2 (testimonios) ──
+    (function () {
+      const viewport = document.getElementById('c2-viewport');
+      const track = document.getElementById('c2-track');
+      const prevBtn = document.getElementById('c2-prev');
+      const nextBtn = document.getElementById('c2-next');
+      if (!viewport || !track) return;
+
+      const realItems = Array.from(track.querySelectorAll('.carousel2__item'));
+      const total = realItems.length;
+      if (!total) return;
+
+      // Clonar para bucle infinito
+      realItems.forEach(item => {
+        track.appendChild(item.cloneNode(true));
+        track.insertBefore(item.cloneNode(true), realItems[0]);
+      });
+
+      const allItems = () => Array.from(track.querySelectorAll('.carousel2__item'));
+
+      let current = total;
+      let autoTimer = null;
+
+      function getItems() { return allItems(); }
+
+      function scrollToIndex(idx, smooth = true) {
+        const items = getItems();
+        const item = items[idx];
+        if (!item) return;
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const viewCenter = viewport.clientWidth / 2;
+        viewport.scrollTo({ left: itemCenter - viewCenter, behavior: smooth ? 'smooth' : 'auto' });
+      }
+
+      function updateActive() {
+        const items = getItems();
+        items.forEach((item, i) => {
+          item.classList.toggle('carousel2__item--active', i === current);
+        });
+      }
+
+      function goTo(idx, smooth = true) {
+        current = idx;
+        scrollToIndex(current, smooth);
+        updateActive();
+      }
+
+      function next() {
+        goTo(current + 1);
+        setTimeout(() => {
+          if (current >= total * 2) {
+            current = total;
+            scrollToIndex(current, false);
+            updateActive();
+          }
+        }, 520);
+      }
+
+      function prev() {
+        goTo(current - 1);
+        setTimeout(() => {
+          if (current < total) {
+            current = total * 2 - 1;
+            scrollToIndex(current, false);
+            updateActive();
+          }
+        }, 520);
+      }
+
+      const startAuto = () => { stopAuto(); autoTimer = setInterval(next, 5000); };
+      const stopAuto = () => { clearInterval(autoTimer); autoTimer = null; };
+
+      prevBtn.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
+      nextBtn.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
+      viewport.addEventListener('mouseenter', stopAuto);
+      viewport.addEventListener('mouseleave', startAuto);
+
+      goTo(current, false);
+      startAuto();
+    })();
+  </script>
+
+  <script>
+    // ── Marquee band (bucle infinito sin huecos) ──
+    (function () {
+      const track = document.getElementById('marquee-track');
+      if (!track) return;
+
+      // Guardamos los elementos originales antes de clonar
+      const originals = Array.from(track.children);
+      const count = originals.length;
+
+      // Clonamos TODOS los elementos originales y los añadimos al final.
+      // Así el track tiene: [serie A] + [serie B clonada]
+      // La animación desplaza exactamente el ancho de la serie A
+      // y al llegar al final el navegador ya tiene la serie B visible,
+      // que es idéntica a la A → salto imperceptible al reiniciar.
+      originals.forEach(li => {
+        track.appendChild(li.cloneNode(true));
+      });
+
+      // Informamos a CSS cuántos elementos tiene UNA serie (no el total)
+      document.documentElement.style.setProperty('--marquee-elements', count);
+    })();
+  </script>
+
+</body>
+
+</html>
