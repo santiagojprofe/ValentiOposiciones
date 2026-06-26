@@ -6,3 +6,8 @@
 !styles.css
 !CNAME
 !.gitignore
+
+# Excepciones para assets/img
+!assets/
+!assets/img/
+!assets/img/**
