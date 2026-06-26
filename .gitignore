@@ -10,8 +10,5 @@
 # Excepciones para assets/img
 !assets/
 !assets/img/
-<<<<<<< HEAD
 !assets/img/**
-=======
-!assets/img/**
->>>>>>> d3556f3a4cbd2f4c8e9cb6724bdeae3a0d1dc683
+
